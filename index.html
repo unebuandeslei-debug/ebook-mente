@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="O Manual da Mente: entenda os padrões que travam você e transforme conhecimento em mudança prática.">
+  <meta name="theme-color" content="#18352d">
+  <title>O Manual da Mente | Pare de se sabotar sem entender por quê</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #17231f;
+      --forest: #18352d;
+      --forest-2: #245243;
+      --sage: #c8d8c9;
+      --lime: #d9f28a;
+      --paper: #f5f0e7;
+      --paper-2: #ebe3d5;
+      --white: #fffdf8;
+      --muted: #65706b;
+      --line: rgba(23, 35, 31, .14);
+      --shadow: 0 22px 60px rgba(23, 35, 31, .12);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "DM Sans", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .serif { font-family: "Playfair Display", Georgia, serif; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: var(--forest-2);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: currentColor;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      letter-spacing: -.035em;
+    }
+    h1 {
+      max-width: 750px;
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 6vw, 5.85rem);
+      line-height: .99;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: clamp(2.25rem, 4.2vw, 4.1rem);
+      line-height: 1.06;
+    }
+    .section-lead {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
+      line-height: 1.75;
+    }
+    .announcement {
+      padding: 10px 20px;
+      color: #f4f8f4;
+      background: var(--forest);
+      font-size: .78rem;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: .035em;
+    }
+    .nav {
+      position: absolute;
+      z-index: 20;
+      top: 38px;
+      left: 0;
+      width: 100%;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+    .brand-mark {
+      display: grid;
+      width: 39px;
+      height: 39px;
+      place-items: center;
+      border: 1px solid var(--forest);
+      border-radius: 50%;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .brand-copy { font-weight: 700; line-height: 1.05; }
+    .brand-copy small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+    .nav-links > a:not(.nav-cta) { text-decoration: none; }
+    .nav-cta {
+      padding: 12px 18px;
+      color: white;
+      background: var(--forest);
+      border-radius: 999px;
+      text-decoration: none;
+    }
+    .hero {
+      position: relative;
+      min-height: 780px;
+      overflow: hidden;
+      padding: 170px 0 85px;
+      background:
+        radial-gradient(circle at 84% 23%, rgba(217, 242, 138, .56), transparent 25%),
+        linear-gradient(135deg, #f8f4ec 0%, #eee8dc 100%);
+    }
+    .hero::after {
+      position: absolute;
+      right: -100px;
+      bottom: -190px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(24, 53, 45, .14);
+      border-radius: 50%;
+      content: "";
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.18fr .82fr;
+      align-items: center;
+      gap: 70px;
+    }
+    .hero-copy > p:not(.eyebrow) {
+      max-width: 660px;
+      margin-bottom: 31px;
+      color: #4d5b55;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      line-height: 1.65;
+    }
+    .hero-copy strong { color: var(--ink); }
+    .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 25px;
+      border: 0;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary {
+      color: #13241f;
+      background: var(--lime);
+      box-shadow: 0 14px 28px rgba(104, 126, 55, .2);
+    }
+    .btn-dark { color: white; background: var(--forest); }
+    .btn-dark:hover { background: #234b40; box-shadow: 0 14px 28px rgba(24, 53, 45, .2); }
+    .safe-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: .83rem;
+      font-weight: 600;
+    }
+    .safe-note svg { width: 17px; }
+    .mini-proof {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .stars { color: #9a6f1e; letter-spacing: 2px; }
+    .mini-proof strong { color: var(--ink); }
+    .book-stage { position: relative; min-height: 510px; }
+    .book-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 430px;
+      height: 430px;
+      background: rgba(200, 216, 201, .7);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .book {
+      position: absolute;
+      z-index: 2;
+      top: 48%;
+      left: 50%;
+      width: 305px;
+      height: 430px;
+      padding: 35px 31px;
+      color: #f5f1e9;
+      background:
+        linear-gradient(115deg, rgba(255,255,255,.08), transparent 35%),
+        var(--forest);
+      border-radius: 5px 16px 16px 5px;
+      box-shadow: -16px 18px 0 #d8d0c3, -27px 31px 55px rgba(23, 35, 31, .27);
+      transform: translate(-50%, -50%) rotate(4deg);
+    }
+    .book::before {
+      position: absolute;
+      top: 0;
+      left: 14px;
+      width: 1px;
+      height: 100%;
+      background: rgba(255,255,255,.16);
+      content: "";
+    }
+    .book-kicker { font-size: .64rem; letter-spacing: .17em; text-transform: uppercase; opacity: .72; }
+    .book h3 {
+      margin: 94px 0 18px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 3.15rem;
+      line-height: .93;
+      letter-spacing: -.05em;
+    }
+    .book-rule { width: 43px; height: 3px; margin-bottom: 17px; background: var(--lime); }
+    .book p { max-width: 190px; color: rgba(255,255,255,.72); font-size: .76rem; line-height: 1.55; }
+    .floating-note {
+      position: absolute;
+      z-index: 3;
+      right: -6px;
+      bottom: 48px;
+      max-width: 190px;
+      padding: 15px 17px;
+      background: var(--white);
+      border: 1px solid rgba(24, 53, 45, .1);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      font-size: .75rem;
+      line-height: 1.5;
+      transform: rotate(-3deg);
+    }
+    .floating-note strong { display: block; margin-bottom: 3px; color: var(--forest); font-size: 1rem; }
+    .pain { padding: 110px 0; }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 90px;
+      align-items: start;
+    }
+    .pain-title { position: sticky; top: 40px; }
+    .pain-list { display: grid; gap: 14px; }
+    .pain-card {
+      display: grid;
+      grid-template-columns: 45px 1fr;
+      gap: 18px;
+      padding: 23px;
+      background: rgba(255,255,255,.48);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      transition: transform .22s ease, background .22s ease;
+    }
+    .pain-card:hover { background: var(--white); transform: translateX(6px); }
+    .pain-num {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      color: var(--forest);
+      background: var(--sage);
+      border-radius: 50%;
+      font-weight: 700;
+    }
+    .pain-card p { margin: 0; color: #48564f; font-size: 1.03rem; line-height: 1.6; }
+    .manifesto {
+      padding: 100px 0;
+      color: white;
+      background: var(--forest);
+    }
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1fr .95fr;
+      align-items: center;
+      gap: 90px;
+    }
+    .manifesto h2 { max-width: 650px; }
+    .manifesto h2 em { color: var(--lime); font-weight: 600; }
+    .manifesto p { color: rgba(255,255,255,.68); line-height: 1.8; }
+    .quote-card {
+      position: relative;
+      padding: 45px;
+      color: var(--ink);
+      background: var(--lime);
+      border-radius: var(--radius);
+      transform: rotate(1.5deg);
+    }
+    .quote-card::before {
+      position: absolute;
+      top: 6px;
+      left: 22px;
+      color: rgba(24,53,45,.16);
+      font-family: Georgia, serif;
+      font-size: 6rem;
+      content: "“";
+    }
+    .quote-card p {
+      position: relative;
+      margin: 0;
+      color: var(--ink);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .inside { padding: 115px 0; }
+    .inside-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      align-items: end;
+      margin-bottom: 50px;
+    }
+    .inside-header h2 { max-width: 680px; margin-bottom: 0; }
+    .inside-header .section-lead { max-width: 390px; margin-bottom: 4px; }
+    .chapters {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .chapter {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      min-height: 150px;
+      padding: 25px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+    .chapter span { color: #8c998f; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; }
+    .chapter h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .chapter p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+    .chapter.bonus { background: var(--sage); }
+    .practical {
+      margin-top: 30px;
+      padding: 28px;
+      color: white;
+      background: var(--forest);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .practical strong { color: var(--lime); }
+    .author {
+      padding: 105px 0;
+      background: var(--paper-2);
+    }
+    .author-grid {
+      display: grid;
+      grid-template-columns: .65fr 1fr;
+      gap: 85px;
+      align-items: center;
+    }
+    .author-photo {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: #d6d8d2;
+      border-radius: 180px 180px 24px 24px;
+    }
+    .author-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.78) contrast(.95); }
+    .author-copy p { color: #526059; line-height: 1.8; }
+    .stats { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .stat {
+      min-width: 130px;
+      padding: 16px 18px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+    }
+    .stat strong { display: block; color: var(--forest); font-family: "Playfair Display", Georgia, serif; font-size: 1.4rem; }
+    .stat small { color: var(--muted); }
+    .testimonials { padding: 115px 0; }
+    .testimonial-head { max-width: 710px; margin-bottom: 48px; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .testimonial {
+      display: flex;
+      flex-direction: column;
+      min-height: 335px;
+      padding: 27px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+    .testimonial .stars { margin-bottom: 18px; }
+    .testimonial > p { flex: 1; color: #53605a; font-size: .93rem; line-height: 1.7; }
+    .person { display: flex; align-items: center; gap: 12px; padding-top: 19px; border-top: 1px solid var(--line); }
+    .person img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
+    .person strong { display: block; font-size: .9rem; }
+    .person small { color: var(--muted); font-size: .74rem; }
+    .offer {
+      padding: 100px 0;
+      color: white;
+      background: #10251f;
+    }
+    .offer-card {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      overflow: hidden;
+      background: #f7f2e8;
+      border-radius: 30px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.22);
+    }
+    .offer-copy { padding: 55px; color: var(--ink); }
+    .offer-copy h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); }
+    .check-list { display: grid; gap: 13px; margin: 28px 0 0; padding: 0; list-style: none; }
+    .check-list li { display: flex; gap: 11px; color: #43514a; font-size: .94rem; }
+    .check {
+      display: grid;
+      flex: 0 0 21px;
+      width: 21px;
+      height: 21px;
+      place-items: center;
+      color: white;
+      background: var(--forest-2);
+      border-radius: 50%;
+      font-size: .72rem;
+    }
+    .price-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 55px;
+      color: white;
+      background: var(--forest-2);
+    }
+    .price-box .old { color: rgba(255,255,255,.58); font-size: .9rem; text-decoration: line-through; }
+    .price {
+      display: flex;
+      align-items: start;
+      margin: 5px 0 7px;
+      font-size: 5.3rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -.07em;
+    }
+    .price small { margin: 11px 4px 0 0; font-size: 1.5rem; letter-spacing: 0; }
+    .payment { margin-bottom: 26px; color: rgba(255,255,255,.7); font-size: .88rem; }
+    .price-box .btn { width: 100%; }
+    .secure { margin-top: 14px; color: rgba(255,255,255,.62); font-size: .76rem; text-align: center; }
+    .guarantee {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-top: 26px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+    .seal {
+      display: grid;
+      width: 64px;
+      height: 64px;
+      place-items: center;
+      color: var(--forest);
+      background: var(--lime);
+      border-radius: 50%;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: .83rem;
+      font-weight: 700;
+      line-height: 1.05;
+      text-align: center;
+    }
+    .guarantee p { margin: 0; color: rgba(255,255,255,.72); font-size: .79rem; line-height: 1.5; }
+    .guarantee strong { display: block; margin-bottom: 3px; color: white; font-size: .9rem; }
+    .faq { padding: 115px 0 140px; }
+    .faq-grid { display: grid; grid-template-columns: .7fr 1fr; gap: 90px; align-items: start; }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-question {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 2px;
+      color: var(--ink);
+      background: transparent;
+      border: 0;
+      font: inherit;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+    }
+    .faq-icon { color: var(--forest-2); font-size: 1.35rem; transition: transform .2s ease; }
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .28s ease;
+    }
+    .faq-answer > div { overflow: hidden; }
+    .faq-answer p { margin: 0; padding: 0 30px 23px 2px; color: var(--muted); font-size: .93rem; line-height: 1.7; }
+    .faq-item.open .faq-answer { grid-template-rows: 1fr; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    footer {
+      padding: 45px 0 110px;
+      color: rgba(255,255,255,.65);
+      background: var(--forest);
+      font-size: .78rem;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    footer .brand-mark { color: white; border-color: rgba(255,255,255,.5); }
+    footer .brand-copy { color: white; }
+    footer .brand-copy small { color: rgba(255,255,255,.5); }
+    .footer-note { max-width: 520px; text-align: right; line-height: 1.6; }
+    .mobile-bar {
+      position: fixed;
+      z-index: 50;
+      right: 12px;
+      bottom: 12px;
+      left: 12px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 10px 10px 10px 17px;
+      color: white;
+      background: rgba(24, 53, 45, .96);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.24);
+      backdrop-filter: blur(12px);
+    }
+    .mobile-bar strong { display: block; font-size: .95rem; }
+    .mobile-bar small { color: rgba(255,255,255,.62); font-size: .68rem; }
+    .mobile-bar .btn { min-height: 44px; padding: 0 17px; font-size: .8rem; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .skip-link {
+      position: fixed;
+      z-index: 99;
+      top: 10px;
+      left: 10px;
+      padding: 10px;
+      background: white;
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: none; }
+
+    /* Direção visual noturna: mais introspectiva, enigmática e premium */
+    body {
+      color: #eef2eb;
+      background: #07100e;
+    }
+    .announcement {
+      color: #dfe9df;
+      background: #06100d;
+      border-bottom: 1px solid rgba(217, 242, 138, .13);
+    }
+    .nav .brand-mark {
+      color: #f4f0e7;
+      border-color: rgba(244, 240, 231, .72);
+    }
+    .nav .brand-copy { color: #f4f0e7; }
+    .nav .brand-copy small { color: rgba(244, 240, 231, .53); }
+    .nav-links > a:not(.nav-cta) { color: rgba(244, 240, 231, .78); }
+    .nav-cta {
+      color: #10231d;
+      background: var(--lime);
+    }
+    .hero {
+      background:
+        radial-gradient(circle at 78% 24%, rgba(116, 151, 105, .3), transparent 25%),
+        radial-gradient(circle at 12% 88%, rgba(61, 105, 88, .18), transparent 27%),
+        linear-gradient(138deg, #07110e 0%, #10251f 52%, #081411 100%);
+    }
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(217,242,138,.15) 0 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,255,255,.08) 0 1px, transparent 1.5px);
+      background-position: 0 0, 47px 63px;
+      background-size: 91px 91px, 137px 137px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 92%);
+      pointer-events: none;
+      content: "";
+    }
+    .hero::after { border-color: rgba(217, 242, 138, .12); }
+    .hero h1 { color: #f5f0e7; }
+    .hero h1 em { color: #cfe882; }
+    .hero-copy > p:not(.eyebrow) { color: #aab8b0; }
+    .hero-copy strong { color: #f4f0e7; }
+    .hero .eyebrow { color: #bfd875; }
+    .hero .safe-note, .hero .mini-proof { color: #96a69e; }
+    .hero .mini-proof strong { color: #e7ece5; }
+    .hero .btn-dark {
+      color: #10211c;
+      background: linear-gradient(135deg, #e2f6a2, #c6e56f);
+      box-shadow: 0 15px 34px rgba(176, 209, 91, .2);
+    }
+    .hero .btn-dark:hover {
+      color: #10211c;
+      background: #e8faaa;
+      box-shadow: 0 18px 38px rgba(176, 209, 91, .28);
+    }
+    .book-glow {
+      background:
+        radial-gradient(circle, rgba(217, 242, 138, .18), rgba(73, 112, 94, .08) 56%, transparent 72%);
+      filter: blur(2px);
+    }
+    .book {
+      background:
+        linear-gradient(115deg, rgba(255,255,255,.07), transparent 38%),
+        #0b1814;
+      border: 1px solid rgba(217,242,138,.18);
+      box-shadow: -16px 18px 0 #1c3029, -27px 31px 70px rgba(0,0,0,.48);
+    }
+    .floating-note {
+      color: #dbe4dc;
+      background: rgba(15, 31, 26, .92);
+      border-color: rgba(217,242,138,.2);
+      box-shadow: 0 22px 55px rgba(0,0,0,.38);
+      backdrop-filter: blur(10px);
+    }
+    .floating-note strong { color: var(--lime); }
+    .pain { background: #0c1814; }
+    .pain h2, .pain-card p { color: #edf1eb; }
+    .pain .section-lead { color: #91a097; }
+    .pain .eyebrow { color: #bcd374; }
+    .pain-card {
+      background: rgba(22, 42, 35, .62);
+      border-color: rgba(207, 232, 130, .1);
+    }
+    .pain-card:hover { background: #183027; }
+    .pain-num {
+      color: #d9f28a;
+      background: rgba(217, 242, 138, .12);
+      border: 1px solid rgba(217, 242, 138, .16);
+    }
+    .manifesto {
+      background:
+        radial-gradient(circle at 90% 10%, rgba(92, 128, 83, .18), transparent 28%),
+        #06100d;
+    }
+    .quote-card {
+      color: #10211c;
+      background: linear-gradient(145deg, #dff39d, #bcd47a);
+      box-shadow: 0 24px 60px rgba(0,0,0,.28);
+    }
+    .inside { background: #101f1a; }
+    .inside h2, .chapter h3 { color: #f1f3ed; }
+    .inside .section-lead, .chapter p { color: #91a097; }
+    .inside .eyebrow { color: #c5dc7e; }
+    .chapter {
+      background: #142720;
+      border-color: rgba(217,242,138,.1);
+    }
+    .chapter span { color: #b9ce77; }
+    .chapter.bonus {
+      background: #1c352b;
+      border-color: rgba(217,242,138,.2);
+    }
+    .practical {
+      background: #07120f;
+      border: 1px solid rgba(217,242,138,.13);
+    }
+    .author {
+      background:
+        radial-gradient(circle at 12% 50%, rgba(78, 119, 99, .18), transparent 26%),
+        #0a1612;
+    }
+    .author h2 { color: #f1f3ed; }
+    .author .eyebrow { color: #c5dc7e; }
+    .author-copy p { color: #9aa89f; }
+    .author-photo {
+      background: #13231e;
+      box-shadow: 0 28px 70px rgba(0,0,0,.32);
+    }
+    .stat {
+      background: rgba(255,255,255,.035);
+      border-color: rgba(217,242,138,.11);
+    }
+    .stat strong { color: #d9f28a; }
+    .stat small { color: #8d9b93; }
+    .testimonials { background: #0e1c17; }
+    .testimonials h2 { color: #f2f3ee; }
+    .testimonials .eyebrow { color: #c3da7a; }
+    .testimonial {
+      background: #13251f;
+      border-color: rgba(217,242,138,.1);
+      box-shadow: 0 18px 45px rgba(0,0,0,.13);
+    }
+    .testimonial > p { color: #a5b0a9; }
+    .person { border-color: rgba(255,255,255,.08); }
+    .person strong { color: #edf1eb; }
+    .person small { color: #839188; }
+    .offer {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(217,242,138,.09), transparent 34%),
+        #050d0a;
+    }
+    .faq { background: #0b1713; }
+    .faq h2 { color: #f1f3ed; }
+    .faq .eyebrow { color: #c3da7a; }
+    .faq .section-lead, .faq-answer p { color: #94a199; }
+    .faq-list, .faq-item { border-color: rgba(217,242,138,.12); }
+    .faq-question { color: #e7ece6; }
+    .faq-icon { color: var(--lime); }
+    footer {
+      background: #050b09;
+      border-top: 1px solid rgba(217,242,138,.09);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links > a:not(.nav-cta) { display: none; }
+      .hero { min-height: auto; padding-top: 150px; }
+      .hero-grid, .pain-grid, .manifesto-grid, .author-grid, .offer-card, .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-grid { gap: 35px; }
+      .hero-copy { text-align: center; }
+      .hero-copy > p:not(.eyebrow), .hero-copy h1 { margin-right: auto; margin-left: auto; }
+      .cta-row, .mini-proof { justify-content: center; }
+      .book-stage { min-height: 500px; }
+      .pain-grid, .manifesto-grid, .author-grid, .faq-grid { gap: 45px; }
+      .pain-title { position: static; }
+      .inside-header { display: block; }
+      .inside-header h2 { margin-bottom: 20px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonial { min-height: auto; }
+      .offer-card { max-width: 650px; margin: 0 auto; }
+      .author-photo { max-width: 430px; margin: 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, 1160px); }
+      .announcement { font-size: .7rem; }
+      .nav { top: 32px; }
+      .nav-cta { display: none; }
+      .hero { padding-top: 125px; padding-bottom: 55px; }
+      h1 { font-size: clamp(2.75rem, 14vw, 4.2rem); }
+      h2 { font-size: 2.45rem; }
+      .hero-copy > p:not(.eyebrow) { font-size: 1.05rem; }
+      .cta-row .btn { width: 100%; }
+      .book-stage { min-height: 410px; }
+      .book-glow { width: 320px; height: 320px; }
+      .book { width: 245px; height: 350px; padding: 28px; }
+      .book h3 { margin-top: 68px; font-size: 2.55rem; }
+      .floating-note { right: 0; bottom: 15px; max-width: 160px; }
+      .pain, .inside, .author, .testimonials, .faq { padding: 80px 0; }
+      .manifesto, .offer { padding: 75px 0; }
+      .pain-card { grid-template-columns: 37px 1fr; padding: 18px; gap: 13px; }
+      .pain-num { width: 36px; height: 36px; }
+      .quote-card { padding: 36px 27px; }
+      .chapters { grid-template-columns: 1fr; }
+      .chapter { min-height: 0; grid-template-columns: 45px 1fr; padding: 20px; }
+      .author-copy { text-align: left; }
+      .offer-copy, .price-box { padding: 35px 24px; }
+      .price { font-size: 4.7rem; }
+      .faq-grid { gap: 25px; }
+      .footer-inner { flex-direction: column; align-items: start; }
+      .footer-note { text-align: left; }
+      .mobile-bar { display: flex; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <div class="announcement">LIVRO DIGITAL • ACESSO IMEDIATO • 15 DIAS DE GARANTIA</div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio" aria-label="O Manual da Mente — início">
+        <span class="brand-mark">M</span>
+        <span class="brand-copy">O Manual da Mente<small>por O Leitor</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#capitulos">Conteúdo</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a class="nav-cta checkout-link" href="https://pay.cakto.com.br/gz83hce_603194?affiliate=WytRFrSC">Quero meu exemplar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Neurociência e psicologia sem enrolação</p>
+          <h1>Você sabe o que precisa mudar. <em>Por que ainda não mudou?</em></h1>
+          <p>Não é falta de informação nem de força de vontade. <strong>O Manual da Mente</strong> ajuda você a entender o que acontece dentro da sua cabeça antes de repetir o padrão de sempre.</p>
+          <div class="cta-row">
+            <a class="btn btn-dark checkout-link" href="https://pay.cakto.com.br/gz83hce_603194?affiliate=WytRFrSC">Quero entender minha mente →</a>
+            <span class="safe-note">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3M6 10h12v10H6V10Z" stroke="currentColor" stroke-width="1.8"/></svg>
+              Compra segura pela Cakto
+            </span>
+          </div>
+          <div class="mini-proof">
+            <span class="stars" aria-label="5 estrelas">★★★★★</span>
+            <span><strong>Mais de 2.400 leitores</strong> já começaram essa jornada.</span>
+          </div>
+        </div>
+
+        <div class="book-stage reveal" aria-label="Representação do livro digital O Manual da Mente">
+          <div class="book-glow"></div>
+          <div class="book">
+            <div class="book-kicker">O Leitor apresenta</div>
+            <h3>O Manual<br>da Mente</h3>
+            <div class="book-rule"></div>
+            <p>Um guia prático para entender o que acontece dentro de você.</p>
+          </div>
+          <div class="floating-note"><strong>142 páginas</strong>com exercício prático em cada capítulo.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pain" id="sobre">
+      <div class="container pain-grid">
+        <div class="pain-title reveal">
+          <p class="eyebrow">Você se reconhece?</p>
+          <h2>Entender o problema não fez ele desaparecer.</h2>
+          <p class="section-lead">Informação sobra. O que falta é aprender a agir no espaço entre o que você sente e o que faz.</p>
+        </div>
+        <div class="pain-list">
+          <article class="pain-card reveal"><span class="pain-num">01</span><p>Você sabe o que precisa mudar, mas volta para a mesma rotina toda semana.</p></article>
+          <article class="pain-card reveal"><span class="pain-num">02</span><p>Repete comportamentos que te prejudicam, mesmo sabendo que vai se arrepender.</p></article>
+          <article class="pain-card reveal"><span class="pain-num">03</span><p>Age no impulso e só percebe o estrago quando a situação já passou.</p></article>
+          <article class="pain-card reveal"><span class="pain-num">04</span><p>Cede quando deveria dizer não — e depois passa horas remoendo.</p></article>
+          <article class="pain-card reveal"><span class="pain-num">05</span><p>Já tentou várias vezes e cansou de fazer promessas para si mesmo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto">
+      <div class="container manifesto-grid">
+        <div class="reveal">
+          <p class="eyebrow" style="color:var(--lime)">O problema nunca foi falta de informação</p>
+          <h2>Conhecimento sozinho <em>não muda nada.</em> Aplicação muda.</h2>
+          <p>Este não é um livro para acumular mais teoria bonita. A linguagem é direta, humana e prática. Cada capítulo termina com um exercício para você observar seus padrões e começar a responder diferente — no mesmo dia.</p>
+        </div>
+        <blockquote class="quote-card reveal">
+          <p>“Curar o passado não é apagar o que aconteceu. É olhar para essas memórias sem que elas tenham o mesmo poder de antes.”</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="inside" id="capitulos">
+      <div class="container">
+        <div class="inside-header reveal">
+          <div>
+            <p class="eyebrow">O que você vai encontrar</p>
+            <h2>10 capítulos para entender o que acontece antes da ação.</h2>
+          </div>
+          <p class="section-lead">Uma leitura fluida, com base em neurociência e psicologia, traduzida para a vida real.</p>
+        </div>
+        <div class="chapters">
+          <article class="chapter reveal"><span>01</span><div><h3>Você contra você</h3><p>Por que sua própria mente te atrapalha antes de qualquer obstáculo externo.</p></div></article>
+          <article class="chapter reveal"><span>02</span><div><h3>De onde vêm seus padrões?</h3><p>Entenda hábitos e reações que você repete sem perceber de onde vieram.</p></div></article>
+          <article class="chapter reveal"><span>03</span><div><h3>Emoções não são inimigas</h3><p>Aprenda a ler o que sente antes de agir no impulso.</p></div></article>
+          <article class="chapter reveal"><span>04</span><div><h3>A voz interior: silencie o crítico</h3><p>Separe intuição de medo disfarçado de razão.</p></div></article>
+          <article class="chapter reveal"><span>05</span><div><h3>Curando o passado</h3><p>Olhe para trás sem continuar preso ao que aconteceu.</p></div></article>
+          <article class="chapter reveal"><span>06</span><div><h3>Seja quem você quer ser</h3><p>Pare de viver pela aprovação dos outros e recupere sua direção.</p></div></article>
+          <article class="chapter reveal"><span>07</span><div><h3>Pare de viver no piloto automático</h3><p>Saia do modo reativo e comece a decidir com intenção.</p></div></article>
+          <article class="chapter reveal"><span>08</span><div><h3>Comece de novo, mesmo no caos</h3><p>Recomece sem depender do momento ideal.</p></div></article>
+          <article class="chapter reveal"><span>09</span><div><h3>Disciplina emocional</h3><p>Descubra o que sustenta a mudança quando a motivação vai embora.</p></div></article>
+          <article class="chapter reveal"><span>10</span><div><h3>A nova versão de você</h3><p>Construa sua identidade por meio do que escolhe fazer todos os dias.</p></div></article>
+          <article class="chapter bonus reveal"><span>★</span><div><h3>Bônus: lidando com recaídas</h3><p>O que fazer quando você escorrega de volta — sem transformar um deslize no fim.</p></div></article>
+          <article class="chapter bonus reveal"><span>+</span><div><h3>Plano prático de 30 dias</h3><p>Um caminho simples para levar as ideias do livro para a sua rotina.</p></div></article>
+        </div>
+        <div class="practical reveal">Você não precisa “estar pronto”. Precisa apenas começar com <strong>um passo que caiba no dia de hoje.</strong></div>
+      </div>
+    </section>
+
+    <section class="author">
+      <div class="container author-grid">
+        <div class="author-photo reveal">
+          <img src="https://omanualdamente.netlify.app/fotos/tesla.jpg" alt="O Leitor, autor de O Manual da Mente" loading="lazy">
+        </div>
+        <div class="author-copy reveal">
+          <p class="eyebrow">Quem escreveu</p>
+          <h2>O livro que o autor gostaria de ter lido anos atrás.</h2>
+          <p>Depois de ler Jung, Frankl, Sêneca, Jordan Peterson e mais de 200 livros sobre comportamento humano, O Leitor percebeu algo incômodo: acumular conhecimento não era o mesmo que mudar.</p>
+          <p>O Manual da Mente reúne o que funcionou, remove a teoria que só parecia bonita e organiza tudo numa linguagem que faz sentido fora do livro.</p>
+          <div class="stats">
+            <div class="stat"><strong>100 mil+</strong><small>no Threads</small></div>
+            <div class="stat"><strong>200+</strong><small>livros lidos</small></div>
+            <div class="stat"><strong>2.400+</strong><small>leitores</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" id="depoimentos">
+      <div class="container">
+        <div class="testimonial-head reveal">
+          <p class="eyebrow">Quem já leu</p>
+          <h2>Não é só sobre entender. É sobre se enxergar.</h2>
+        </div>
+        <div class="testimonials-grid">
+          <article class="testimonial reveal">
+            <span class="stars" aria-label="5 estrelas">★★★★★</span>
+            <p>“Li outros livros de desenvolvimento pessoal antes. A maioria eu esquecia em dois dias. Esse aqui eu fui obrigada a parar e fazer os exercícios, porque não dava para ignorar o que estava lendo sobre mim mesma.”</p>
+            <div class="person"><img src="https://omanualdamente.netlify.app/fotos/marlene-santos.jpg" alt="" loading="lazy"><span><strong>Marlene Santos</strong><small>Leitora verificada</small></span></div>
+          </article>
+          <article class="testimonial reveal">
+            <span class="stars" aria-label="5 estrelas">★★★★★</span>
+            <p>“Me ajudou a refletir melhor sobre a maneira como me vejo, como me posiciono em relação aos meus sentimentos e objetivos, e a entender melhor como reajo a diferentes situações.”</p>
+            <div class="person"><img src="https://omanualdamente.netlify.app/fotos/yane-andrade.jpg" alt="" loading="lazy"><span><strong>Yane Andrade</strong><small>Leitora verificada</small></span></div>
+          </article>
+          <article class="testimonial reveal">
+            <span class="stars" aria-label="5 estrelas">★★★★★</span>
+            <p>“O Manual, numa linguagem fluida, apresenta um bom leque de ferramentas para atingir objetivos de aprimoramento pessoal. Nota-se que há embasamento, sem se perder em pormenores desnecessários.”</p>
+            <div class="person"><img src="https://omanualdamente.netlify.app/fotos/alexandre.jpg" alt="" loading="lazy"><span><strong>Alexandre</strong><small>Leitor verificado</small></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer" id="oferta">
+      <div class="container">
+        <div class="offer-card reveal">
+          <div class="offer-copy">
+            <p class="eyebrow">Acesso completo e vitalício</p>
+            <h2>Comece a entender a pessoa que mais influencia a sua vida: você.</h2>
+            <ul class="check-list">
+              <li><span class="check">✓</span> Livro digital completo com 142 páginas</li>
+              <li><span class="check">✓</span> 10 capítulos com exercícios práticos</li>
+              <li><span class="check">✓</span> Capítulo bônus sobre recaídas</li>
+              <li><span class="check">✓</span> Plano prático de 30 dias</li>
+              <li><span class="check">✓</span> Curadoria de leituras complementares</li>
+              <li><span class="check">✓</span> Acesso imediato após a confirmação</li>
+            </ul>
+          </div>
+          <div class="price-box">
+            <span class="old">De R$ 67,00</span>
+            <div class="price"><small>R$</small>37</div>
+            <div class="payment">Pagamento único • sem mensalidade</div>
+            <a class="btn btn-primary checkout-link" href="https://pay.cakto.com.br/gz83hce_603194?affiliate=WytRFrSC">QUERO MEU EXEMPLAR →</a>
+            <div class="secure">🔒 Pagamento processado com segurança pela Cakto</div>
+            <div class="guarantee">
+              <span class="seal">15<br>DIAS</span>
+              <p><strong>Garantia incondicional</strong>Se não fizer sentido para você, solicite o reembolso dentro do prazo informado.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="duvidas">
+      <div class="container faq-grid">
+        <div class="reveal">
+          <p class="eyebrow">Ainda com dúvida?</p>
+          <h2>Respostas diretas, como o livro.</h2>
+          <p class="section-lead">Tudo o que você precisa saber antes de começar.</p>
+        </div>
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false"><span>Como recebo o livro depois de comprar?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div><p>Assim que o pagamento é confirmado, o acesso ao material digital é enviado para o seu e-mail. Você pode começar a ler imediatamente.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false"><span>Consigo ler no celular ou no Kindle?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div><p>Sim. O arquivo digital pode ser lido no celular, tablet, computador e e-reader. Para o Kindle, basta usar a função “Enviar para Kindle” da Amazon.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false"><span>Existe versão física?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div><p>Não. O Manual da Mente é um produto 100% digital, o que permite acesso imediato e um preço mais acessível.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false"><span>O acesso expira?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div><p>Não. O pagamento é único e o acesso é vitalício. Você não terá mensalidade nem cobrança recorrente.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false"><span>E se eu não gostar?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div><p>Você conta com 15 dias de garantia incondicional. Dentro desse período, pode solicitar o reembolso conforme as regras da plataforma.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="brand"><span class="brand-mark">M</span><span class="brand-copy">O Manual da Mente<small>por O Leitor</small></span></div>
+      <p class="footer-note">Este produto é educativo e não substitui acompanhamento psicológico ou médico. Resultados variam conforme a aplicação individual. © <span id="year"></span> O Manual da Mente.</p>
+    </div>
+  </footer>
+
+  <div class="mobile-bar" id="mobileBar">
+    <span><strong>O Manual da Mente</strong><small>Pagamento único • R$ 37</small></span>
+    <a class="btn btn-primary checkout-link" href="https://pay.cakto.com.br/gz83hce_603194?affiliate=WytRFrSC">QUERO AGORA</a>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll(".faq-question").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var item = button.closest(".faq-item");
+        var isOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item.open").forEach(function (openItem) {
+          openItem.classList.remove("open");
+          openItem.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+        });
+        if (!isOpen) {
+          item.classList.add("open");
+          button.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.09 });
+
+    document.querySelectorAll(".reveal").forEach(function (element) {
+      observer.observe(element);
+    });
+
+    document.querySelectorAll(".checkout-link").forEach(function (link) {
+      link.addEventListener("click", function () {
+        try {
+          sessionStorage.setItem("manualMenteCheckoutClick", new Date().toISOString());
+        } catch (error) {}
+      });
+    });
+  </script>
+</body>
+</html>
